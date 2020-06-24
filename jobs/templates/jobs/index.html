@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% load static %}
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta name="description" content="" />
-    <meta
-      name="author"
-      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
-    />
-    <meta name="generator" content="Jekyll v4.0.1" />
     <title>Aashish Shrestha</title>
 
     <!-- Bootstrap core CSS -->
@@ -38,13 +33,11 @@
         }
       }
     </style>
-    <!-- Custom styles for this template -->
-    <link href="album.css" rel="stylesheet" />
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Aashish Shrestha</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Aashish Shrestha</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -58,9 +51,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link active" href="#">GitHub </a>
-            <a class="nav-item nav-link" href="#">Resume</a>
-            <a class="nav-item nav-link" href="#">Blog</a>
+            <a class="nav-item nav-link active" href="http://github.com/aashish97">GitHub </a>
+            <a class="nav-item nav-link" href="{% static 'Resume.pdf' %}"
+              >Resume</a
+            >
+            <a class="nav-item nav-link" href="{% url 'list' %}">Blog</a>
           </div>
         </div>
       </nav>
@@ -71,24 +66,31 @@
         <div class="container">
           <h1>Hi, I'm Aashish</h1>
           <p class="lead text-muted">
-            Tech loving guy. Currenlty learning Django web-framework. Its fun to get started with it.
+            Tech loving guy. Currenlty learning Django web-framework. Its fun to
+            get started with it.
           </p>
           <p>
-            <a href="mailto:itsmeasish98@gmail.com" class="btn btn-primary my-2">Hire Me</a>
+            <a href="mailto:itsmeasish98@gmail.com" class="btn btn-primary my-2"
+              >Hire Me</a
+            >
           </p>
+          <img class="img-thumbnail" src="{% static 'Aashish.jpg' %}"/>
         </div>
       </section>
 
       <div class="album py-5 bg-light">
         <div class="container">
           <div class="row">
-
             {% for job in jobs.all %}
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
-                  <img src="{{ job.image.url }}" class="card-img-top" alt="image">
+                <img
+                  src="{{ job.image.url }}"
+                  class="card-img-top"
+                  alt="image"
+                />
                 <div class="card-body">
-                <h4>{{job.title}}</h4>
+                  <h4>{{job.title}}</h4>
                   <p class="card-text">
                     {{job.summary}}
                   </p>
