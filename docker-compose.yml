@@ -1,0 +1,15 @@
+services:
+  # database service if we were using postgres
+  # db:
+  #   image: postgres
+  #   volumes:
+  #     - ./data/db:/var/lib/postgresql/data
+
+  django-app:
+
+    # build docker file contained in current directory
+    build: .  
+
+    # port bindings
+    ports:
+      - "8000:8000"
